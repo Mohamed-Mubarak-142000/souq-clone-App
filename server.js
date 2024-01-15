@@ -21,11 +21,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(express.static(path.join(__dirname, "./frontend/build")));
 
 app.use("/api/auth", authRoute);
 app.use("/api/category", categoryRoute);
 app.use("/api/product", productRoute);
-app.use(express.static(path.join(__dirname, "./frontend/build")));
 
 //REST API
 app.use("*", function (req, res) {
