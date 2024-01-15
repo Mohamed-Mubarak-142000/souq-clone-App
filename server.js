@@ -21,7 +21,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
-app.use(express.static(path.json(__dirname, "./frontend/build")));
+app.use(express.static(path.join(__dirname, "./frontend/build")));
 
 app.use("/api/auth", authRoute);
 app.use("/api/category", categoryRoute);
@@ -29,7 +29,7 @@ app.use("/api/product", productRoute);
 
 //REST API
 app.use("*", function (req, res) {
-  res.sendFile(path.json(__dirname, "./frontend/build/index.html"));
+  res.sendFile(path.join(__dirname, "./frontend/build/index.html"));
 });
 
 //PORT
